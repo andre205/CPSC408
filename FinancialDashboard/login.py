@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request
+nofrom flask import Flask, redirect, url_for, request
 app = Flask(__name__)
 
 @app.route('/dashboard/<name>')
@@ -10,6 +10,9 @@ def login():
    if request.method == 'POST':
       user = request.form['u']
       password = request.form['p']
+
+      #USER DB PASS VALIDATION HERE
+
       if(password == "p"):
           return redirect(url_for('dashboard',name = user))
       else:
