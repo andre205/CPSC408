@@ -1,18 +1,23 @@
+# @author: Tyler Andrews
+# This program generates unnormalized data for a hypothetical game company's database
+# it takes 2 command line arguments: a csv path and a number of tuples to generate
+
+# The tables store user data and support tickets for user issues with games
+# The schema is as follows:
+# UserInfo(uid, username, first, last, telephone,  address, zip, dob)
+# UserInventory(uid, gid, purchasedate)
+# UserSpecs(uid, cpu, cpu_freq, graphics, manf, ramsize, ramtype, resolution)
+# GameInfo(gid, name, releasedate, description)
+# UserTickets(tid, uid, gid)
+# TicketInfo(tid, text, level)
+
+# note: uid = userId, gid = gameId, tid = ticketId
+
 import sys
 import csv
 import mimesis as m
 
-#A game company database
-#Storing user data and support tickets for problems with games
-#
-# UserInfo(uid, username, first, last, telephone,  address, zip, dob)
-# UserInventory(uid, gid, purchasedate)
-# UserSpecs(uid,cpu, cpu_freq, graphics, manf, ramsize, ramtype, resolution )
-# GameInfo(gid, name, releasedate, description)
-# UserTickets(tid, uid, gid)
-# TicketInfo(tid, level)
-
-#validate string as int
+# validate string as int
 def strIsInt(s):
     try:
         int(s)
@@ -20,7 +25,7 @@ def strIsInt(s):
     except ValueError:
         return False
 
-#ensure there are 3 input params, second is csv path, third is an integer
+# ensure there are 3 input params, second is csv path, third is an integer
 if len(sys.argv) != 3 or sys.argv[1][-4:] != '.csv' or not strIsInt(sys.argv[2]):
     print("Please use this program with the following command line parameters:")
     print("python generator.py [csv path] [tuples to generate]")
