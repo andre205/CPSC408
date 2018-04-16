@@ -34,6 +34,7 @@ else:
 
     for i in range(int(sys.argv[2])):
         int_out = []
+        
         int_out.append(m.Person().username())
         int_out.append(m.Person().name())
         int_out.append(m.Person().last_name())
