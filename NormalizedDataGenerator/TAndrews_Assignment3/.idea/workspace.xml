@@ -20,19 +20,19 @@
       <file leaf-file-name="DatabaseManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/cpsc408/DatabaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+            <state relative-caret-position="555">
+              <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <marker date="1523916156217" expanded="true" signature="1704:1783" ph="INSERT INTO UserInfo... " />
-                <marker date="1523916156217" expanded="true" signature="1704:1790" ph="INSERT INTO UserInfo... " />
-                <marker date="1523916156217" expanded="true" signature="1704:1837" ph="INSERT INTO UserInfo... " />
-                <marker date="1523916156217" expanded="true" signature="1944:2035" ph="INSERT INTO GameInfo... " />
-                <marker date="1523916156217" expanded="true" signature="2146:2235" ph="INSERT INTO UserInventory... " />
-                <marker date="1523916156217" expanded="true" signature="2309:2462" ph="INSERT INTO UserSpecs... " />
-                <marker date="1523916156217" expanded="true" signature="2538:2609" ph="INSERT INTO UserTickets... " />
-                <marker date="1523916156217" expanded="true" signature="2716:2758" ph="INSERT INTO TicketInfo... " />
-                <marker date="1523916156217" expanded="true" signature="2716:2796" ph="INSERT INTO TicketInfo... " />
+                <marker date="1523925747484" expanded="true" signature="1706:1785" ph="INSERT INTO UserInfo... " />
+                <marker date="1523925747484" expanded="true" signature="1706:1792" ph="INSERT INTO UserInfo... " />
+                <marker date="1523925747484" expanded="true" signature="1706:1839" ph="INSERT INTO UserInfo... " />
+                <marker date="1523925747484" expanded="true" signature="1946:2037" ph="INSERT INTO GameInfo... " />
+                <marker date="1523925747484" expanded="true" signature="2148:2237" ph="INSERT INTO UserInventory... " />
+                <marker date="1523925747484" expanded="true" signature="2311:2464" ph="INSERT INTO UserSpecs... " />
+                <marker date="1523925747484" expanded="true" signature="2540:2611" ph="INSERT INTO UserTickets... " />
+                <marker date="1523925747484" expanded="true" signature="2718:2760" ph="INSERT INTO TicketInfo... " />
+                <marker date="1523925747484" expanded="true" signature="2718:2798" ph="INSERT INTO TicketInfo... " />
               </folding>
             </state>
           </provider>
@@ -123,9 +123,9 @@
         <option value="$PROJECT_DIR$/src/dataNormalizer.java" />
         <option value="$PROJECT_DIR$/src/com/cpsc408/dataNormalizer.java" />
         <option value="$PROJECT_DIR$/src/com/cpsc408/Student.java" />
-        <option value="$PROJECT_DIR$/src/com/cpsc408/DatabaseManager.java" />
         <option value="$PROJECT_DIR$/src/com/cpsc408/dataRow.java" />
         <option value="$PROJECT_DIR$/src/com/cpsc408/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/cpsc408/DatabaseManager.java" />
       </list>
     </option>
   </component>
@@ -319,15 +319,16 @@
       <workItem from="1523568671959" duration="540000" />
       <workItem from="1523569639994" duration="2461000" />
       <workItem from="1523901329676" duration="8302000" />
-      <workItem from="1523915492464" duration="953000" />
+      <workItem from="1523915492464" duration="1679000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12256000" />
+    <option name="totallyTimeSpent" value="12982000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -342,7 +343,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23449132" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -378,15 +379,15 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1523916156217" expanded="true" signature="1704:1783" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1704:1790" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1704:1837" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1944:2035" ph="INSERT INTO GameInfo... " />
-            <marker date="1523916156217" expanded="true" signature="2146:2235" ph="INSERT INTO UserInventory... " />
-            <marker date="1523916156217" expanded="true" signature="2309:2462" ph="INSERT INTO UserSpecs... " />
-            <marker date="1523916156217" expanded="true" signature="2538:2609" ph="INSERT INTO UserTickets... " />
-            <marker date="1523916156217" expanded="true" signature="2716:2758" ph="INSERT INTO TicketInfo... " />
-            <marker date="1523916156217" expanded="true" signature="2716:2796" ph="INSERT INTO TicketInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1785" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1792" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1839" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1946:2037" ph="INSERT INTO GameInfo... " />
+            <marker date="1523925747484" expanded="true" signature="2148:2237" ph="INSERT INTO UserInventory... " />
+            <marker date="1523925747484" expanded="true" signature="2311:2464" ph="INSERT INTO UserSpecs... " />
+            <marker date="1523925747484" expanded="true" signature="2540:2611" ph="INSERT INTO UserTickets... " />
+            <marker date="1523925747484" expanded="true" signature="2718:2760" ph="INSERT INTO TicketInfo... " />
+            <marker date="1523925747484" expanded="true" signature="2718:2798" ph="INSERT INTO TicketInfo... " />
           </folding>
         </state>
       </provider>
@@ -459,15 +460,15 @@
           <caret line="146" column="29" lean-forward="false" selection-start-line="146" selection-start-column="29" selection-end-line="146" selection-end-column="29" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1523916156217" expanded="true" signature="1704:1783" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1704:1790" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1704:1837" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1944:2035" ph="INSERT INTO GameInfo... " />
-            <marker date="1523916156217" expanded="true" signature="2146:2235" ph="INSERT INTO UserInventory... " />
-            <marker date="1523916156217" expanded="true" signature="2309:2462" ph="INSERT INTO UserSpecs... " />
-            <marker date="1523916156217" expanded="true" signature="2538:2609" ph="INSERT INTO UserTickets... " />
-            <marker date="1523916156217" expanded="true" signature="2716:2758" ph="INSERT INTO TicketInfo... " />
-            <marker date="1523916156217" expanded="true" signature="2716:2796" ph="INSERT INTO TicketInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1785" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1792" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1839" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1946:2037" ph="INSERT INTO GameInfo... " />
+            <marker date="1523925747484" expanded="true" signature="2148:2237" ph="INSERT INTO UserInventory... " />
+            <marker date="1523925747484" expanded="true" signature="2311:2464" ph="INSERT INTO UserSpecs... " />
+            <marker date="1523925747484" expanded="true" signature="2540:2611" ph="INSERT INTO UserTickets... " />
+            <marker date="1523925747484" expanded="true" signature="2718:2760" ph="INSERT INTO TicketInfo... " />
+            <marker date="1523925747484" expanded="true" signature="2718:2798" ph="INSERT INTO TicketInfo... " />
           </folding>
         </state>
       </provider>
@@ -540,15 +541,15 @@
           <caret line="146" column="29" lean-forward="false" selection-start-line="146" selection-start-column="29" selection-end-line="146" selection-end-column="29" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1523916156217" expanded="true" signature="1704:1783" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1704:1790" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1704:1837" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1944:2035" ph="INSERT INTO GameInfo... " />
-            <marker date="1523916156217" expanded="true" signature="2146:2235" ph="INSERT INTO UserInventory... " />
-            <marker date="1523916156217" expanded="true" signature="2309:2462" ph="INSERT INTO UserSpecs... " />
-            <marker date="1523916156217" expanded="true" signature="2538:2609" ph="INSERT INTO UserTickets... " />
-            <marker date="1523916156217" expanded="true" signature="2716:2758" ph="INSERT INTO TicketInfo... " />
-            <marker date="1523916156217" expanded="true" signature="2716:2796" ph="INSERT INTO TicketInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1785" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1792" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1839" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1946:2037" ph="INSERT INTO GameInfo... " />
+            <marker date="1523925747484" expanded="true" signature="2148:2237" ph="INSERT INTO UserInventory... " />
+            <marker date="1523925747484" expanded="true" signature="2311:2464" ph="INSERT INTO UserSpecs... " />
+            <marker date="1523925747484" expanded="true" signature="2540:2611" ph="INSERT INTO UserTickets... " />
+            <marker date="1523925747484" expanded="true" signature="2718:2760" ph="INSERT INTO TicketInfo... " />
+            <marker date="1523925747484" expanded="true" signature="2718:2798" ph="INSERT INTO TicketInfo... " />
           </folding>
         </state>
       </provider>
@@ -679,19 +680,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cpsc408/DatabaseManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+        <state relative-caret-position="555">
+          <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1523916156217" expanded="true" signature="1704:1783" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1704:1790" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1704:1837" ph="INSERT INTO UserInfo... " />
-            <marker date="1523916156217" expanded="true" signature="1944:2035" ph="INSERT INTO GameInfo... " />
-            <marker date="1523916156217" expanded="true" signature="2146:2235" ph="INSERT INTO UserInventory... " />
-            <marker date="1523916156217" expanded="true" signature="2309:2462" ph="INSERT INTO UserSpecs... " />
-            <marker date="1523916156217" expanded="true" signature="2538:2609" ph="INSERT INTO UserTickets... " />
-            <marker date="1523916156217" expanded="true" signature="2716:2758" ph="INSERT INTO TicketInfo... " />
-            <marker date="1523916156217" expanded="true" signature="2716:2796" ph="INSERT INTO TicketInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1785" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1792" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1706:1839" ph="INSERT INTO UserInfo... " />
+            <marker date="1523925747484" expanded="true" signature="1946:2037" ph="INSERT INTO GameInfo... " />
+            <marker date="1523925747484" expanded="true" signature="2148:2237" ph="INSERT INTO UserInventory... " />
+            <marker date="1523925747484" expanded="true" signature="2311:2464" ph="INSERT INTO UserSpecs... " />
+            <marker date="1523925747484" expanded="true" signature="2540:2611" ph="INSERT INTO UserTickets... " />
+            <marker date="1523925747484" expanded="true" signature="2718:2760" ph="INSERT INTO TicketInfo... " />
+            <marker date="1523925747484" expanded="true" signature="2718:2798" ph="INSERT INTO TicketInfo... " />
           </folding>
         </state>
       </provider>

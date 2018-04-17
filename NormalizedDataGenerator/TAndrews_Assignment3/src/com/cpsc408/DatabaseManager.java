@@ -37,7 +37,7 @@ public class DatabaseManager {
                 conn = DriverManager.getConnection(CONN_URL + CONN_FLAGS, CONN_USER, CONN_PASS);
             }
             catch (Exception var2) {
-                var2.printStackTrace();
+                //var2.printStackTrace();
                 return null;
             }
         }
@@ -78,12 +78,12 @@ public class DatabaseManager {
             PreparedStatement ticketInfo_st = conn.prepareStatement("INSERT INTO TicketInfo(tid , text, level )" +
                     "VALUES(?,?,?);");
 
-
-            userInfo_st.setString(1, d.getUsername().trim().substring(0, Math.min(40,d.getUsername().length())));
-            userInfo_st.setString(2, d.getFirstName().trim().substring(0, Math.min(40,d.getFirstName().length())));
-            userInfo_st.setString(3, d.getLastName().trim().substring(0,Math.min(40,d.getLastName().length())));
-            userInfo_st.setString(4, d.getTelephone().trim().substring(0,Math.min(40,d.getTelephone().length())));
-            userInfo_st.setString(5, d.getAddress().trim().substring(0,Math.min(40,d.getAddress().length())));
+            //trim all data and truncate to size of whichever is smaller: database character limit, or length of generated string
+            userInfo_st.setString(1, d.getUsername().trim().substring(0, Math.min(40, d.getUsername().length())));
+            userInfo_st.setString(2, d.getFirstName().trim().substring(0, Math.min(40, d.getFirstName().length())));
+            userInfo_st.setString(3, d.getLastName().trim().substring(0,Math.min(40, d.getLastName().length())));
+            userInfo_st.setString(4, d.getTelephone().trim().substring(0,Math.min(40, d.getTelephone().length())));
+            userInfo_st.setString(5, d.getAddress().trim().substring(0,Math.min(40, d.getAddress().length())));
             userInfo_st.setString(6, d.getZip().trim().substring(0,Math.min(10, d.getZip().length())));
             userInfo_st.setString(7, d.getDob().trim().substring(0,Math.min(40, d.getDob().length())));
             userInfo_st.executeUpdate();
