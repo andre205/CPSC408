@@ -1,9 +1,9 @@
-nofrom flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, url_for, request
 app = Flask(__name__)
 
 @app.route('/dashboard/<name>')
 def dashboard(name):
-   return 'welcome %s' % name
+   return 'welcome back %s' % name
 
 @app.route('/login',methods = ['POST', 'GET'])
 def login():
