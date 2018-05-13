@@ -41,12 +41,12 @@ def get_post(id, check_author=True):
         ' WHERE p.id = %s',
         (id,)
     )
-    post = db.cursor.fetchone()
+    post = get_db().cursor.fetchone()
 
     if post is None:
         abort(404, "Post id {0} doesn't exist.".format(id))
 
-    if check_author and post['author_id'] != g.user['id']:
+    if check_author and post[4] != g.userid:
         abort(403)
 
     return post
@@ -71,7 +71,7 @@ def create():
             db.cursor.execute(
                 'INSERT INTO post (title, body, author_id)'
                 ' VALUES (%s, %s, %s)',
-                (title, body, g.user['id'])
+                (title, body, g.userid)
             )
             db.commit()
             return redirect(url_for('blog.index'))

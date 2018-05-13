@@ -14,7 +14,7 @@ def login_required(view):
     """View decorator that redirects anonymous users to the login page."""
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        if g.user is None:
+        if g.userid is None:
             return redirect(url_for('auth.login'))
 
         return view(**kwargs)
@@ -29,12 +29,14 @@ def load_logged_in_user():
     user_id = session.get('user_id')
 
     if user_id is None:
-        g.user = None
+        g.userid = None
     else:
         get_db().cursor.execute(
             'SELECT * FROM user WHERE id = %s', (user_id,)
         )
-        g.user = get_db().cursor.fetchone()
+        u = get_db().cursor.fetchone()
+        g.userid = u[0]
+
 
 
 @bp.route('/register', methods=('GET', 'POST'))
@@ -90,13 +92,13 @@ def login():
 
         if user is None:
             error = 'User does not exist.'
-        elif not user[1] == password:
+        elif user[1] != password:
             error = 'Incorrect password.'
 
         if error is None:
             # store the user id in a new session and return to the index
             session.clear()
-            # session['user_id'] = user['id']
+            session['user_id'] = user[0]
             return redirect(url_for('index'))
 
         flash(error)
