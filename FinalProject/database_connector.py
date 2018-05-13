@@ -3,23 +3,23 @@ import mysql.connector as sql
 
 config = {
   'user': 'root',
-  'password': 'p',
+  'password': 'pass',
   'host': '127.0.0.1',
-  'database': 'StudentDB',
+  'database': 'FlaskDB',
   'raise_on_warnings': True,
 }
 
 cnx = sql.connect(**config)
 cursor = cnx.cursor()
 
-query = ("SELECT FirstName FROM Student")
+query = ("SELECT * FROM Users")
 
 cursor.execute(query)
 
-
-for (FirstName) in cursor:
-    print(FirstName[0])
-
+for (firstName) in cursor:
+    print(firstName[0])
+    print(firstName[1])
+    print(firstName[2])
 
 cursor.close()
 cnx.close();

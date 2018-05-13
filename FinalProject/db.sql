@@ -28,8 +28,6 @@ CREATE TABLE Admins
   )
     ENGINE = InnoDB;
 
-
-
 -- auto-generated definition
 CREATE TABLE Posts
 (

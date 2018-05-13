@@ -1,35 +1,8 @@
-import sqlite3
-
 import click
 from flask import current_app, g
 from flask.cli import with_appcontext
 
 import mysql.connector as sql
-
-
-config = {
-  'user': 'root',
-  'password': 'p',
-  'host': '127.0.0.1',
-  'database': 'FlaskDB',
-  'raise_on_warnings': True,
-}
-
-cnx = sql.connect(**config)
-cursor = cnx.cursor()
-
-query = ("SELECT FirstName FROM Student")
-
-cursor.execute(query)
-
-
-for (FirstName) in cursor:
-    print(FirstName[0])
-
-
-cursor.close()
-cnx.close();
-
 
 
 def get_db():
@@ -38,11 +11,17 @@ def get_db():
     again.
     """
     if 'db' not in g:
-        g.db = sqlite3.connect(
-            current_app.config['DATABASE'],
-            detect_types=sqlite3.PARSE_DECLTYPES
-        )
-        g.db.row_factory = sqlite3.Row
+
+        config = {
+          'user': 'root',
+          'password': 'pass',
+          'host': '127.0.0.1',
+          'database': 'FlaskDB',
+          'raise_on_warnings': True,
+        }
+
+        g.db = sql.connect(**config)
+        g.db.cursor = g.db.cursor()
 
     return g.db
 
@@ -54,6 +33,7 @@ def close_db(e=None):
     db = g.pop('db', None)
 
     if db is not None:
+        db.cursor.close()
         db.close()
 
 
@@ -62,7 +42,7 @@ def init_db():
     db = get_db()
 
     with current_app.open_resource('schema.sql') as f:
-        db.executescript(f.read().decode('utf8'))
+        db.cursor.execute(f.read().decode('utf8'))
 
 
 @click.command('init-db')
