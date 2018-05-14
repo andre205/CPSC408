@@ -1,15 +1,18 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Bretter</title>
+<title>{% block title %}{% endblock %} - MessageBoard </title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
-  <h1><a href="{{ url_for('index') }}">BretBook</a></h1>
+  <h1><a href="{{ url_for('index') }}">MessageBoard</a></h1>
   <ul>
     {% if g.userid %}
-      <li><span> Welcome, {{  g.username }}</span>
+      <li><span> Welcome, {{  g.firstname }}</span>
+
         {% if g.userisadmin %}
-          <li><a class="action" href="{{ url_for('blog.create') }}"> Reporting </a>
+          <li><a class="action" href="{{ url_for('blog.reporting') }}"> Admin Reporting </a>
         {% endif %}
+
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+
     {% else %}
       <li><a href="{{ url_for('auth.register') }}">Register</a>
       <li><a href="{{ url_for('auth.login') }}">Log In</a>

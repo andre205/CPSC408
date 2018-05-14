@@ -14,12 +14,11 @@ def index():
     db = get_db()
     db.cursor.execute(
         'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' ORDER BY created DESC'
+        ' FROM post p JOIN users u ON p.author_id = u.userid'
+        ' ORDER BY created DESC',
     )
     p = db.cursor.fetchall()
 
-    # .fetchall()
     return render_template('blog/index.html', posts=p)
 
 
@@ -37,7 +36,7 @@ def get_post(id, check_author=True):
     """
     get_db().cursor.execute(
         'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
+        ' FROM post p JOIN users u ON p.author_id = u.userid'
         ' WHERE p.id = %s',
         (id,)
     )
@@ -78,6 +77,24 @@ def create():
 
     return render_template('blog/create.html')
 
+@bp.route('/search', methods=('GET', 'POST'))
+@login_required
+def search():
+    if request.method == 'POST':
+        searchstring = request.form['searchstring']
+
+        db.cursor.execute(
+            'SELECT p.id, title, body, created, author_id, username'
+            ' FROM post p JOIN users u ON p.author_id = u.userid'
+            # ' WHERE body LIKE %%  %s %% '
+            ' ORDER BY created DESC' , (searchstring,)
+        )
+        p = db.cursor.fetchall()
+        print(p[0])
+        return render_template('blog/search.html', posts=p)
+
+    return render_template('blog/search.html')
+
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
@@ -105,6 +122,31 @@ def update(id):
             return redirect(url_for('blog.index'))
 
     return render_template('blog/update.html', post=post)
+
+# FAVORITING - NEEDS WORK
+@bp.route('/', methods=('GET','POST'))
+@login_required
+def favorite(id):
+    """Favorite a post"""
+    post = get_post(id)
+
+    db = get_db()
+    db.cursor.execute(
+        'INSERT INTO favorites (userId, postID) VALUES (%s, %s)',
+        (g.userid, id)
+    )
+    db.commit()
+    return redirect(url_for('blog.index'))
+
+@bp.route('/reporting', methods=('GET','POST'))
+@login_required
+def reporting():
+
+
+
+    return render_template('blog/reporting.html')
+
+
 
 
 @bp.route('/<int:id>/delete', methods=('POST',))

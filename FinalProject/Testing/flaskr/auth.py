@@ -37,6 +37,8 @@ def load_logged_in_user():
         if(u):
             g.userid = u[0]
             g.username = u[1]
+            g.firstname = u[3]
+            g.filter = ""
 
         get_db().cursor.execute(
             'SELECT * from admins WHERE userID = %s', (user_id,)
