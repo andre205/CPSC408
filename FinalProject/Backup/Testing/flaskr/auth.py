@@ -9,6 +9,7 @@ from flaskr.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+
 def login_required(view):
     """View decorator that redirects anonymous users to the login page."""
     @functools.wraps(view)
@@ -31,19 +32,10 @@ def load_logged_in_user():
         g.userid = None
     else:
         get_db().cursor.execute(
-            'SELECT * from Users WHERE userID = %s', (user_id,)
+            'SELECT * FROM user WHERE id = %s', (user_id,)
         )
         u = get_db().cursor.fetchone()
-        if(u):
-            g.userid = u[0]
-            g.username = u[1]
-
-        get_db().cursor.execute(
-            'SELECT * from admins WHERE userID = %s', (user_id,)
-        )
-        a = get_db().cursor.fetchone()
-        if(a):
-            g.userisadmin = True
+        g.userid = u[0]
 
 
 
@@ -57,8 +49,6 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        firstName = request.form['firstName']
-        lastName = request.form['lastName']
         db = get_db()
         error = None
 
@@ -67,7 +57,7 @@ def register():
         elif not password:
             error = 'Password is required.'
         db.cursor.execute(
-            'SELECT userID from Users WHERE username = %s', (username,)
+            'SELECT id FROM user WHERE username = %s', (username,)
         )
         if db.cursor.fetchone() is not None:
             error = 'User {0} is already registered.'.format(username)
@@ -76,8 +66,8 @@ def register():
             # the name is available, store it in the database and go to
             # the login page
             db.cursor.execute(
-                'INSERT INTO Users (username, pass, firstName, lastName) VALUES (%s, %s, %s, %s)',
-                (username, password, firstName, lastName)
+                'INSERT INTO user (username, password) VALUES (%s, %s)',
+                (username, password)
             )
             db.commit()
             return redirect(url_for('auth.login'))
@@ -96,13 +86,13 @@ def login():
         db = get_db()
         error = None
         db.cursor.execute(
-            'SELECT * from Users WHERE username = %s', (username,)
+            'SELECT * FROM user WHERE username = %s', (username,)
         )
         user = db.cursor.fetchone()
 
         if user is None:
             error = 'User does not exist.'
-        elif user[2] != password:
+        elif user[1] != password:
             error = 'Incorrect password.'
 
         if error is None:

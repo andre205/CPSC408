@@ -4,11 +4,8 @@
 <nav>
   <h1><a href="{{ url_for('index') }}">BretBook</a></h1>
   <ul>
-    {% if g.userid %}
-      <li><span> Welcome, {{  g.username }}</span>
-        {% if g.userisadmin %}
-          <li><a class="action" href="{{ url_for('blog.create') }}"> Reporting </a>
-        {% endif %}
+    {% if g.user %}
+      <li><span>{{ g.user['username'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
     {% else %}
       <li><a href="{{ url_for('auth.register') }}">Register</a>
