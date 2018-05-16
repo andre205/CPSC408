@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, redirect, render_template, request, url_for, send_file
 )
 from werkzeug.exceptions import abort
 
@@ -149,3 +149,28 @@ def delete(id):
     db.cursor.execute('DELETE FROM post WHERE id = %s', (id,))
     db.commit()
     return redirect(url_for('messageboard.index'))
+
+
+@bp.route('/getPostReport')
+@login_required
+def post_report():
+    return send_file('reports/post_report.csv',
+                         mimetype='text/csv',
+                         attachment_filename='post_report.csv',
+                         as_attachment=True)
+
+@bp.route('/getUserReport')
+@login_required
+def user_report():
+    return send_file('reports/user_report.csv',
+                         mimetype='text/csv',
+                         attachment_filename='user_report.csv',
+                         as_attachment=True)
+
+@bp.route('/getAdminReport')
+@login_required
+def admin_report():
+    return send_file('reports/admin_report.csv',
+                         mimetype='text/csv',
+                         attachment_filename='admin_report.csv',
+                         as_attachment=True)
