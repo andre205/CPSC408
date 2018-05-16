@@ -10,7 +10,7 @@ bp = Blueprint('messageboard', __name__)
 
 @bp.route('/')
 def index():
-    """Show all the posts, most recent first."""
+
     db = get_db()
     db.cursor.execute(
         'SELECT p.id, title, body, created, author_id, username'
@@ -85,7 +85,7 @@ def search():
             ' ORDER BY created DESC' , (searchstring,)
         )
         p = db.cursor.fetchall()
-        print(p[0])
+        # print(p[0])
         return render_template('messageboard/search.html', posts=p)
 
     return render_template('messageboard/search.html')
@@ -140,12 +140,10 @@ def reporting():
     return render_template('messageboard/reporting.html')
 
 
-
-
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
-he post.
+
     get_post(id)
     db = get_db()
     db.cursor.execute('DELETE FROM post WHERE id = %s', (id,))
