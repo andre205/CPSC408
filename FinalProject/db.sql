@@ -21,7 +21,7 @@ CREATE TABLE `post` (
 CREATE TABLE `users` (
   `userID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
-  `pass` varchar(50) NOT NULL,
+  `pass` varchar(100) NOT NULL,
   `firstName` varchar(50) DEFAULT NULL,
   `lastName` varchar(50) DEFAULT NULL,
   `dateCreated` date DEFAULT NULL,

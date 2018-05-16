@@ -74,7 +74,7 @@ def register():
             # the login page
             db.cursor.execute(
                 'INSERT INTO Users (username, pass, firstName, lastName) VALUES (%s, %s, %s, %s)',
-                (username, password, firstName, lastName)
+                (username, generate_password_hash(password), firstName, lastName)
             )
             db.commit()
             return redirect(url_for('auth.login'))
@@ -99,7 +99,7 @@ def login():
 
         if user is None:
             error = 'User does not exist.'
-        elif user[2] != password:
+        elif not check_password_hash(user[2], password):
             error = 'Incorrect password.'
 
         if error is None:
