@@ -1,6 +1,5 @@
 import mysql.connector as sql
 
-
 config = {
   'user': 'root',
   'password': 'pass',
