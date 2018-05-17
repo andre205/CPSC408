@@ -1,4 +1,0 @@
-p.id, title, body, created, author_id, username
-0	1	2	3	4	5
-
-control panel -> services -> mysql80

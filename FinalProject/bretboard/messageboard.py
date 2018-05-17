@@ -25,12 +25,6 @@ def index():
 
 
 def get_post(id, check_author=True):
-    # Checks that the id exists and optionally that the current user is
-    # the author.
-    #
-    # returns the post with author information
-    # :raise 404: if a post with the given id doesn't exist
-    # :raise 403: if the current user isn't the author
 
     get_db().cursor.execute(
         'SELECT p.postid, title, body, created, authorid, username'
@@ -73,6 +67,7 @@ def create():
             return redirect(url_for('messageboard.index'))
 
     return render_template('messageboard/create.html')
+
 
 @bp.route('/search')
 @bp.route('/search/<searchstring>', methods=('GET', 'POST'))
@@ -124,20 +119,6 @@ def update(id):
 
     return render_template('messageboard/update.html', post=post)
 
-# FAVORITING - NEEDS WORK
-@bp.route('/', methods=('GET','POST'))
-@login_required
-def favorite(id):
-    """Favorite a post"""
-    post = get_post(id)
-
-    db = get_db()
-    db.cursor.execute(
-        'INSERT INTO favorites (userId, postID) VALUES (%s, %s)',
-        (g.userid, id)
-    )
-    db.commit()
-    return redirect(url_for('messageboard.index'))
 
 @bp.route('/reporting', methods=('GET','POST'))
 @login_required
@@ -155,6 +136,7 @@ def delete(id):
     db.cursor.execute('DELETE FROM posts WHERE postid = %s', (id,))
     db.commit()
     return redirect(url_for('messageboard.index'))
+
 
 @bp.route('/generate', methods=('GET','POST'))
 @login_required

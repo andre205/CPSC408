@@ -82,18 +82,54 @@ def generate_admin_report():
 #CHANGE THIS
 def generate_stat_report():
 
+    out = []
+
     cnx = sql.connect(**config)
     cursor = cnx.cursor()
 
-    query = ("SELECT u.username FROM Admins a JOIN Users u ON a.userID=u.userID")
-
+    query = ("SELECT COUNT(DISTINCT userid) from users")
     cursor.execute(query)
+    usercount = cursor.fetchone()
 
-    all_posts = cursor.fetchall()
+    iout = ['Total users',usercount[0]]
+    out.append(iout)
 
-    out = [["Admin Username"] ]
+    query = ("SELECT COUNT(DISTINCT userid) from admins")
+    cursor.execute(query)
+    admincount = cursor.fetchone()
 
-    for p in all_posts:
+    iout = ['Total admins',admincount[0]]
+    out.append(iout)
+
+    query = ("SELECT COUNT(DISTINCT postid) from posts")
+    cursor.execute(query)
+    postcount = cursor.fetchone()
+
+    iout = ['Total posts',postcount[0]]
+    out.append(iout)
+
+    out.append("\n")
+
+    query = ('SELECT username, numposts FROM ('
+      ' SELECT username, COUNT(DISTINCT postid) as numposts from all_data'
+      ' GROUP BY username'
+      ' ) sub'
+      ' ORDER BY numposts DESC LIMIT 1')
+    cursor.execute(query)
+    mostactive = cursor.fetchone()
+    iout = ['Most active user',mostactive[0]]
+    out.append(iout)
+
+    out.append("\n")
+
+    iout=['Posts by user']
+    out.append(iout)
+
+    query = ("SELECT username, COUNT(DISTINCT postid) as 'numposts' from all_data GROUP BY username;")
+    cursor.execute(query)
+    all_user_posts = cursor.fetchall()
+
+    for p in all_user_posts:
         iout = []
         for i in range(len(p)):
             iout.append(p[i])

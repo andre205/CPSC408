@@ -30,6 +30,11 @@ CREATE INDEX post_index ON posts (postid, authorid, created, title, body);
 CREATE INDEX user_index ON users (userid, username, pass, firstName, lastName, dateCreated);
 CREATE INDEX admin_index ON admins (userid, adminLevel);
 
+CREATE VIEW all_data AS
+SELECT postid,authorid,u.username,u.firstName,u.lastName,a.adminLevel,created,title,body from posts p
+  JOIN users u ON p.authorid = u.userid
+  LEFT JOIN admins a ON a.userid = u.userid;
+
 INSERT INTO users(userid, username, pass, firstName, lastName) VALUES (1,'admin','pbkdf2:sha256:50000$kWhkvjfh$6d80b446582cd51b2040ac0e515468ef9b86fdc58ba32859ff122e41b9df8ba2','admin','admin');
 INSERT INTO admins(userid, adminLevel) VALUES (1,3);
 INSERT INTO posts(postid, authorid, title, body) VALUES (1,1,'first post','first post');

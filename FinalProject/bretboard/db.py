@@ -30,13 +30,8 @@ def close_db(e=None):
         db.cursor.close()
         db.close()
 
-
-# def init_db():
-#     db = get_db()
-#
-#     with current_app.open_resource('schema.sql') as f:
-#         db.cursor.execute(f.read().decode('utf8'))
-
+def init_db():
+    db = get_db()
 
 @click.command('init-db')
 @with_appcontext
@@ -44,7 +39,6 @@ def init_db_command():
     # Clear existing data and create new tables.
     init_db()
     click.echo('Initialized the database.')
-
 
 def init_app(app):
     app.teardown_appcontext(close_db)
