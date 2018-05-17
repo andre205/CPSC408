@@ -10,9 +10,9 @@ def get_db():
 
         config = {
           'user': 'root',
-          'password': 'pass',
+          'password': 'p',
           'host': '127.0.0.1',
-          'database': 'FlaskDB',
+          'database': 'bretboard',
           'raise_on_warnings': True,
         }
 

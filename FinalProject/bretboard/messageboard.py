@@ -6,6 +6,8 @@ from werkzeug.exceptions import abort
 from bretboard.auth import login_required
 from bretboard.db import get_db
 
+from generate_reports import generate_all_reports
+
 bp = Blueprint('messageboard', __name__)
 
 @bp.route('/')
@@ -13,9 +15,9 @@ def index():
 
     db = get_db()
     db.cursor.execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN users u ON p.author_id = u.userid'
-        ' ORDER BY created DESC',
+        'SELECT p.postid, title, body, created, authorid, username'
+        ' FROM posts p JOIN users u ON p.authorid = u.userid'
+        ' ORDER BY created DESC'
     )
     p = db.cursor.fetchall()
 
@@ -31,9 +33,9 @@ def get_post(id, check_author=True):
     # :raise 403: if the current user isn't the author
 
     get_db().cursor.execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN users u ON p.author_id = u.userid'
-        ' WHERE p.id = %s',
+        'SELECT p.postid, title, body, created, authorid, username'
+        ' FROM posts p JOIN users u ON p.authorid = u.userid'
+        ' WHERE p.postid = %s',
         (id,)
     )
     post = get_db().cursor.fetchone()
@@ -63,7 +65,7 @@ def create():
         else:
             db = get_db()
             db.cursor.execute(
-                'INSERT INTO post (title, body, author_id)'
+                'INSERT INTO posts (title, body, authorid)'
                 ' VALUES (%s, %s, %s)',
                 (title, body, g.userid)
             )
@@ -72,23 +74,27 @@ def create():
 
     return render_template('messageboard/create.html')
 
-@bp.route('/search', methods=('GET', 'POST'))
+@bp.route('/search')
+@bp.route('/search/<searchstring>', methods=('GET', 'POST'))
 @login_required
-def search():
-    if request.method == 'POST':
-        searchstring = request.form['searchstring']
+def search(searchstring=""):
 
-        db.cursor.execute(
-            'SELECT p.id, title, body, created, author_id, username'
-            ' FROM post p JOIN users u ON p.author_id = u.userid'
-            # ' WHERE body LIKE %%  %s %% '
-            ' ORDER BY created DESC' , (searchstring,)
-        )
-        p = db.cursor.fetchall()
-        # print(p[0])
-        return render_template('messageboard/search.html', posts=p)
+    s = searchstring
+    if not s:
+        s=""
 
-    return render_template('messageboard/search.html')
+    db = get_db()
+    db.cursor.execute(
+        'SELECT p.postid, title, body, created, authorid, username'
+        ' FROM posts p JOIN users u ON p.authorid = u.userid'
+        ' WHERE body LIKE %s'
+        ' OR title LIKE %s'
+        ' ORDER BY created DESC',
+        ('%' + s + '%','%' + s + '%',)
+    )
+    p = db.cursor.fetchall()
+
+    return render_template('messageboard/search.html', posts=p)
 
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
@@ -110,7 +116,7 @@ def update(id):
         else:
             db = get_db()
             db.cursor.execute(
-                'UPDATE post SET title = %s, body = %s WHERE id = %s',
+                'UPDATE posts SET title = %s, body = %s WHERE postid = %s',
                 (title, body, id)
             )
             db.commit()
@@ -146,9 +152,15 @@ def delete(id):
 
     get_post(id)
     db = get_db()
-    db.cursor.execute('DELETE FROM post WHERE id = %s', (id,))
+    db.cursor.execute('DELETE FROM posts WHERE postid = %s', (id,))
     db.commit()
     return redirect(url_for('messageboard.index'))
+
+@bp.route('/generate', methods=('GET','POST'))
+@login_required
+def generate_all():
+    generate_all_reports()
+    return render_template('messageboard/reporting.html')
 
 
 @bp.route('/getPostReport')
@@ -173,4 +185,12 @@ def admin_report():
     return send_file('reports/admin_report.csv',
                          mimetype='text/csv',
                          attachment_filename='admin_report.csv',
+                         as_attachment=True)
+
+@bp.route('/getStatReport')
+@login_required
+def stat_report():
+    return send_file('reports/stat_report.csv',
+                         mimetype='text/csv',
+                         attachment_filename='stat_report.csv',
                          as_attachment=True)

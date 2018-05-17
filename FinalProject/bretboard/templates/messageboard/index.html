@@ -4,8 +4,18 @@
   <h1>{% block title %}Posts{% endblock %}</h1>
 
   {% if g.userid %}
-    <input name="searchstring" id="searchstring" value="">
-    <a class="action" href="{{ url_for('messageboard.search') }}">Search</a>
+    <label >Search: <br></label>
+
+    <input onchange="sendUrl();" type='text' id='searchstring'>
+    <!-- <button onclick="sendUrl();">Search</button> -->
+    <!-- <a class="action" href=onclick="sendUrl();">Search</a> -->
+
+    <script>
+        function sendUrl(){
+            window.location.assign("/search/"+document.getElementById("searchstring").value);
+        }
+    </script>
+
     <a class="action" href="{{ url_for('messageboard.create') }}">New Post</a>
   {% endif %}
 
@@ -20,9 +30,9 @@
             <div class="about">by {{ post[5] }}  on {{ post[3] }}  </div>
         </div>
 
-        {% if g.userid %}
+        <!-- {% if g.userid %}
         <a class="action" href="{{ url_for('messageboard.favorite', id=post[0]) }}">Favorite</a>
-        {% endif %}
+        {% endif %} -->
 
 
 

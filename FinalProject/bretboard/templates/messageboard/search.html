@@ -2,8 +2,18 @@
 
 {% block header %}
   <h1>{% block title %}Posts{% endblock %}</h1>
-    <input name="searchstring" id="searchstring" value="">
-    <a class="action" href="{{ url_for('messageboard.search') }}">Search</a>
+  <label >Search: <br></label>
+
+  <input onchange="sendUrl();" type='text' id='searchstring'>
+  <!-- <button onclick="sendUrl();">Search</button> -->
+  <!-- <a class="action" href=onclick="sendUrl();">Search</a> -->
+
+  <script>
+      function sendUrl(){
+          window.location.assign("/search/"+document.getElementById("searchstring").value);
+      }
+  </script>
+    <a class="action" href="{{ url_for('messageboard.create') }}">New Post</a>
 {% endblock %}
 
 {% block content %}

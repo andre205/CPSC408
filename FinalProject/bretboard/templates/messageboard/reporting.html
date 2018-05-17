@@ -5,6 +5,11 @@
   <form method="post">
     <label for="title">Generate MessageBoard Reports</label>
 
+    <a class="action" href="{{ url_for('messageboard.generate_all') }}">Generate All Reports</a>
+    <br>
+
+    <label for="rest">Get MessageBoard Reports</label>
+
     <label for="userreport">Users</label>
     <a href="/getUserReport">Get User Report</a>
     <br>
@@ -13,5 +18,8 @@
     <br>
     <label for="postreport">Posts</label>
     <a href="/getPostReport">Get Post Report</a>
+    <br>
+    <label for="statreport">Stats</label>
+    <a href="/getStatReport">Get Stat Report</a>
 
 {% endblock %}
