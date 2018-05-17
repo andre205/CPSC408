@@ -24,6 +24,8 @@ To host the server, from the FinalProject folder:
 
 	flask run
 
+To create and populate the database, copy and paste the contents of db.sql into a datagrip terminal.
+
 Navigate to 127.0.0.1:5000
 
 If you have any questions or problems feel free to slack me or email me at andre205@mail.chapman.edu
