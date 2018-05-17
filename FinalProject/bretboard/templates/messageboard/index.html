@@ -9,6 +9,7 @@
     <input onchange="sendUrl();" type='text' id='searchstring'>
     <!-- <button onclick="sendUrl();">Search</button> -->
 
+    <!-- trim url parameter to only include search term -->
     <script>
         function sendUrl(){
             window.location.assign("/search/"+document.getElementById("searchstring").value);

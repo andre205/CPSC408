@@ -4,17 +4,16 @@ from flask.cli import with_appcontext
 
 import mysql.connector as sql
 
+config = {
+  'user': 'root',
+  'password': 'p',
+  'host': '127.0.0.1',
+  'database': 'bretboard',
+  'raise_on_warnings': True,
+}
 
 def get_db():
     if 'db' not in g:
-
-        config = {
-          'user': 'root',
-          'password': 'p',
-          'host': '127.0.0.1',
-          'database': 'bretboard',
-          'raise_on_warnings': True,
-        }
 
         g.db = sql.connect(**config)
         g.db.cursor = g.db.cursor()

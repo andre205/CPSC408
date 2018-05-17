@@ -10,6 +10,7 @@ config = {
   'raise_on_warnings': True,
 }
 
+#saves user report csv to server to be downloaded
 def generate_user_report():
 
     cnx = sql.connect(**config)
@@ -33,6 +34,7 @@ def generate_user_report():
         writer = csv.writer(f)
         writer.writerows(out)
 
+#saves post report csv to server to be downloaded
 def generate_post_report():
 
     cnx = sql.connect(**config)
@@ -56,6 +58,7 @@ def generate_post_report():
         writer = csv.writer(f)
         writer.writerows(out)
 
+#saves admin report csv to server to be downloaded
 def generate_admin_report():
 
     cnx = sql.connect(**config)
@@ -79,7 +82,7 @@ def generate_admin_report():
         writer = csv.writer(f)
         writer.writerows(out)
 
-#CHANGE THIS
+#saves stat report csv to server to be downloaded
 def generate_stat_report():
 
     out = []

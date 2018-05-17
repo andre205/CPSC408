@@ -9,6 +9,7 @@ from bretboard.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+#for functions that require user to be logged in
 def login_required(view):
 
     @functools.wraps(view)
@@ -20,7 +21,7 @@ def login_required(view):
 
     return wrapped_view
 
-
+#retrieve session variables
 @bp.before_app_request
 def load_logged_in_user():
 
@@ -47,7 +48,6 @@ def load_logged_in_user():
             g.userisadmin = True
 
 
-
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
 
@@ -69,9 +69,8 @@ def register():
         if db.cursor.fetchone() is not None:
             error = 'User {0} is already registered.'.format(username)
 
+        #after registering, redirect to login page
         if error is None:
-            # the name is available, store it in the database and go to
-            # the login page
             db.cursor.execute(
                 'INSERT INTO Users (username, pass, firstName, lastName) VALUES (%s, %s, %s, %s)',
                 (username, generate_password_hash(password), firstName, lastName)

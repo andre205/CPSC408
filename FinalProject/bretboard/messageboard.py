@@ -10,6 +10,7 @@ from generate_reports import generate_all_reports
 
 bp = Blueprint('messageboard', __name__)
 
+#index page - show all posts
 @bp.route('/')
 def index():
 
@@ -23,7 +24,7 @@ def index():
 
     return render_template('messageboard/index.html', posts=p)
 
-
+#retrieve one post by id
 def get_post(id, check_author=True):
 
     get_db().cursor.execute(
@@ -42,7 +43,7 @@ def get_post(id, check_author=True):
 
     return post
 
-
+#create a new post entry
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
@@ -68,7 +69,7 @@ def create():
 
     return render_template('messageboard/create.html')
 
-
+#search for a post by string
 @bp.route('/search')
 @bp.route('/search/<searchstring>', methods=('GET', 'POST'))
 @login_required
@@ -91,7 +92,7 @@ def search(searchstring=""):
 
     return render_template('messageboard/search.html', posts=p)
 
-
+#update a post by id
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
@@ -119,14 +120,14 @@ def update(id):
 
     return render_template('messageboard/update.html', post=post)
 
-
+#show reporting page for admins
 @bp.route('/reporting', methods=('GET','POST'))
 @login_required
 def reporting():
 
     return render_template('messageboard/reporting.html')
 
-
+#delete a post by id
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
@@ -137,14 +138,14 @@ def delete(id):
     db.commit()
     return redirect(url_for('messageboard.index'))
 
-
+#generate reports
 @bp.route('/generate', methods=('GET','POST'))
 @login_required
 def generate_all():
     generate_all_reports()
     return render_template('messageboard/reporting.html')
 
-
+#downloads post report
 @bp.route('/getPostReport')
 @login_required
 def post_report():
